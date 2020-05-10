@@ -1,6 +1,11 @@
+Ines Ihouline 
+
 # **Rust shell**
 ---------------
+
+
 ### 1 - Introduction
+
 Bienvenue dans la suite du cours de programmation systèmes et réseaux. Au travers ce cours, nous allons visiter des concepts liés aux capacités qu’offrent votre hardware et vos systèmes d’exploitations, afin de vous dévoiler la magie qui est cachée par les langages de haut niveau.
 L’étendue des concepts est très vaste, nous ne pourront pas tout voir malheureusement.
 
@@ -18,7 +23,7 @@ Cet espace est découpé comme nous l’avons vu avant en segments, c’est votr
 
 1. En Rust à quoi servent les références ?
 
-> Les références permettent un accès multiples à la même variables. Elles ont une durée de vie qui dépend de leur portée, une fois que cette portée dépassée, l'emprunt n'est plus valable et est donc retiré de la mémoire.
+> Les références permettent un accès multiples à la même variables en lecture et/ou en écriture. Elles ont une durée de vie qui dépend de leur portée, une fois que cette portée dépassée, l'emprunt n'est plus valable et est donc retiré de la mémoire.
 
 
 2. Citez en Rust les grandes façons de déclarer ses propres types.
@@ -27,7 +32,7 @@ Cet espace est découpé comme nous l’avons vu avant en segments, c’est votr
 
 3. Rust est compilé nativement (assembleur sous forme de code machine) ou compte sur une machine virtuelle pour s’exécuter ?
 
->	Rust se compile nativement grâce à LLVM.
+>	Rust se compile nativement grâce à LLVM, une machine virtuelle.
 
 
 4. Imaginons qu’on a un système avec un processeur 8bits, quelle est la valeur maximale adressable ?
@@ -47,7 +52,7 @@ Cet espace est découpé comme nous l’avons vu avant en segments, c’est votr
 1. Comment compiler puis exécuter son programme ? Exécuter les test ? Où sont rangés les binaires (en mode debug) ?
 
 > Pour executer son programme il faut faire un cargo build et pour executer cargo run. Pour executer les tests il faut faire un cargo test.
-Les binaires en mode debug sont dans le dossier debug.
+Les binaires en mode debug sont dans le dossier target/debug/build.
 
 
 ### 3 - Execution d’un Processus
@@ -57,13 +62,15 @@ Les binaires en mode debug sont dans le dossier debug.
 3. Réussir à exécuter une commande avec std::process::Command::status.
 
 4. Afficher le statut d’une commande, pourquoi Rust vous force à récupérer le statut
->
+
+> Rust suppose que si principal programme revient, c'est qu'il s'est terminé avec succès. Ce n'est qu'en appelant explicitement des fonctions comme expect ou std :: process :: exit que le programme peut se terminer avec un code d'état d'erreur. C'est pour cela que le programme attend qu'il se terminer pour collecter son statut afin de savoir quoi faire.
 
 5. Que fait votre programme pendant que son enfant s’exécute
->
+>Pendant que son enfant s'exécute, le programme attend qu'il se termine.
+
 
 6. Maintenant gérer mais pour une commande avec plusieurs arguments !
->
+
 
 
 ### 4 - Redirections - pipe my programs’
@@ -71,10 +78,10 @@ Les binaires en mode debug sont dans le dossier debug.
 #### 4.1 Questions : Redirections
 
 7. Donnez avec vos mot une définition d’un tupe entre deux programmes citez vos sources.
->
+>Un tube entre deux programmes crée une liaison, un dialogue entre la sortie des deux programme.
 
 8. Écrire une version basique ou une commande sans argument traite une commande sans arguments par exemple un simple ls redirigé dans le programme echo.
->
+
 
 9. Écrire une version plus avancée où nos deux programmes s’exécutent vraiment en même temps (pas de triche avec std::process::Command::output) et gèrent plusieurs arguments aux deux commandes.
 
@@ -83,10 +90,11 @@ Les binaires en mode debug sont dans le dossier debug.
 #### 5.1 Questions
 
 10. C’est quoi un processus id ? Citez vos sources.
->
+>processus id est un entier qui représente un identifiant unique faisant référence à un programme lors de son lancement, c'est à dire à un processus.
+
 
 11. Écrire une implémentation basique qui gère un seul job en tâche de fond.
->
+
 
 12. Écrire une structure 8 pour stocker les programmes en cours d’exécution de votre shell.
 >
