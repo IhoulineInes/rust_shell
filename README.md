@@ -1,4 +1,6 @@
-Ines Ihouline 
+Ines Ihouline
+
+https://github.com/IhoulineInes/rust_shell
 
 # **Rust shell**
 ---------------
